@@ -28317,10 +28317,17 @@ async function run() {
             .addLink('Mój niestandardowy link', 'https://writeabout.net')
             .write();
     }
-    catch (error) {
+    catch (error$1) {
         // Fail the workflow run if an error occurs
-        if (error instanceof Error)
-            setFailed(error.message);
+        error('Something bad happened', {
+            title: 'Bad Error',
+            file: '.github/workflows/ci.yml',
+            startLine: 59,
+            startColumn: 11,
+            endColumn: 23
+        });
+        if (error$1 instanceof Error)
+            setFailed(error$1.message);
     }
 }
 
